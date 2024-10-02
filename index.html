@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Menu</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="assets/boxicons/css/boxicons.min.css">
     <style>
         *{
@@ -200,6 +200,39 @@ h3 {
     }
     
 }
+        .fmodal{
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            /* background: transparent(90%); */
+            background: rgba(9, 9, 9, 0.625);
+            /* backdrop-filter: ; */
+        }
+        .fModalImg{
+            height: 100%;
+            z-index: 110;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            place-items: center;
+        }
+        .fmodal img{
+            width: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .fmodal .cross{
+            font-size: 3rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+        .fmodal.hide{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -228,6 +261,13 @@ h3 {
         <a href="#idk"><button class="category-btn active">IDK</button></a>
     </div>
 
+    <div class="fmodal hide" id="fModal" onclick="Close()">
+        <div class="fModalImg" id="fModalImg">
+            
+            <img src="assets/img/food3.jpg" alt="">
+        </div>
+        <div class="cross" id="closeFModal" onclick="Close()"><i class="bx bx-x"></i></div>
+    </div>
 
     <!-- Product List -->
     <div class="product-list grid-view" id="product-list">
@@ -333,6 +373,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
+        <div id="print"></div>
         <div class="product-card">
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
@@ -352,8 +393,38 @@ h3 {
         <button class="nav-btn"><i class="bx bxl-instagram"></i></button>
     </nav>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
     <script>
+        function Close(){
+            var fModalEl=document.querySelector('#fModal');
+            fModalEl.classList.add('hide');
+        }
+        var productCardEls=document.querySelectorAll('.product-card');
+
+        // 
+        var fo=productCardEls.length;
+        for(let i=0;i<fo;i++){
+            productCardEls[i].addEventListener('click',()=>{
+                childr=productCardEls[i].children;
+                document.getElementById('print').innerHTML=childr[0];
+                
+                var fModalEl=document.querySelector("#fModal");
+                var fModalImgEl=document.querySelector('#fModalImg');
+                fModalImgEl.innerHTML=childr[0].outerHTML;
+                fModalEl.classList.remove('hide');
+            });
+        }
+
+       
+    // var fModalControlEl=document.querySelector('#closeFModal');
+    // fModalControlEl.addEventListener('click',()=>{
+    //     var fModalEl=document.querySelector('#fModal');
+    //         fModalEl.classList.add('hide');
+        
+    // });   
+
+
+        
         // Switch between Grid and List view
 function switchToGrid() {
     document.getElementById('product-list').classList.add('grid-view');
