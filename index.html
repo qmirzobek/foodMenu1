@@ -233,6 +233,52 @@ h3 {
         .fmodal.hide{
             display: none;
         }
+        .fImgSlider{
+            top: 0;
+            width: 80%;
+            height: 100vh;
+            position: fixed;
+            z-index: 110;
+            
+            
+        }
+        .fImgSlider .fImg{
+            place-items: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fImg img{
+            width: 100%;
+        }
+        .fImgSlider .fPrevButton{
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            left: 10px;
+            z-index: 200;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background-color: rgba(61, 66, 67, 0.636);
+        }
+        .fImgSlider .fNextButton{
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background-color: rgba(61, 66, 67, 0.636);
+        }
     </style>
 </head>
 <body>
@@ -261,10 +307,16 @@ h3 {
         <a href="#idk"><button class="category-btn active">IDK</button></a>
     </div>
 
-    <div class="fmodal hide" id="fModal" onclick="Close()">
+    <div class="fmodal hide" id="fModal">
         <div class="fModalImg" id="fModalImg">
+            <div class="fImgSlider">
+                <div class="fImg" id="fImg">
+                    <img src="assets/img/food4.jpg" alt="">
+                </div>
+                <div class="fPrevButton" onclick="prev()"><i class="bx bx-left-arrow"></i></div>
+                <div class="fNextButton" onclick="next()"><i class="bx bx-right-arrow"></i></div>
+            </div>
             
-            <img src="assets/img/food3.jpg" alt="">
         </div>
         <div class="cross" id="closeFModal" onclick="Close()"><i class="bx bx-x"></i></div>
     </div>
@@ -272,7 +324,7 @@ h3 {
     <!-- Product List -->
     <div class="product-list grid-view" id="product-list">
         <h3 class="sectionName" id="non">Хлеб</h3>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food2.jpg,food3.jpg,food4.jpg'>
             <img src="assets/img/food3.jpg" alt="Dish 1">
             <div class="product-info">
                 <h3>Хлебное ассорти</h3>
@@ -280,7 +332,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food3.jpg,food4.jpg,food5.jpg'>
             <img src="assets/img/food3.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Хрустящий хлеб (1 шт)</h3>
@@ -288,7 +340,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food2.jpg,food3.jpg,food4.jpg'>
             <img src="assets/img/food3.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Бородинский хлеб (1 шт)</h3>
@@ -296,7 +348,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food2.jpg,food3.jpg,food4.jpg'>
             <img src="assets/img/food3.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Xлеб </h3>
@@ -304,7 +356,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food2.jpg,food3.jpg,food4.jpg'>
             <img src="assets/img/food4.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Патырчик (1 шт)</h3>
@@ -316,7 +368,7 @@ h3 {
 
         <h3 class="sectionName" id="salad">Салаты</h3>
 
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Оливье</h3>
@@ -324,7 +376,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Салат Аччик-чучук</h3>
@@ -332,7 +384,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Винегрет</h3>
@@ -340,7 +392,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Цезарь</h3>
@@ -349,7 +401,7 @@ h3 {
             </div>
         </div>
         <h3 class="sectionName" id="idk">IDK</h3>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Смак с курицей</h3>
@@ -357,7 +409,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food1.webp" alt="Dish 2">
             <div class="product-info">
                 <h3>Мужской каприз</h3>
@@ -365,7 +417,7 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food2.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Руккола с сухофруктами</h3>
@@ -373,7 +425,8 @@ h3 {
                 <!-- <button class="add-btn">+ Add</button> -->
             </div>
         </div>
-        <div class="product-card">
+        <!-- <div id="print"></div> -->
+        <div class="product-card" data-imageSet='food5.jpg,img1.png,food4.jpg'>
             <img src="assets/img/food5.jpg" alt="Dish 2">
             <div class="product-info">
                 <h3>Cheese Platter</h3>
@@ -401,18 +454,66 @@ h3 {
         var productCardEls=document.querySelectorAll('.product-card');
 
         // 
+        var imgArray=[];
         var fo=productCardEls.length;
         for(let i=0;i<fo;i++){
-            productCardEls[i].addEventListener('click',()=>{
-                childr=productCardEls[i].children;
-                // document.getElementById('print').innerHTML=childr[0];
+            productCardEls[i].addEventListener('click',(imgArray)=>{
                 
+                childr=productCardEls[i];
+                // document.getElementById('print').innerHTML=childr[0];
+                console.log(childr);
+                var jsonString=JSON.parse(JSON.stringify(childr.dataset.imageset));
+                // console.log(jsonString);
+                imgArray=jsonString.split(",");
+                localStorage.setItem('imgArray',imgArray);
                 var fModalEl=document.querySelector("#fModal");
-                var fModalImgEl=document.querySelector('#fModalImg');
-                fModalImgEl.innerHTML=childr[0].outerHTML;
+                var fModalImgEl=document.querySelector('#fImg');
+                fModalImgEl.innerHTML='<img src="assets/img/food4.jpg" alt="">';
                 fModalEl.classList.remove('hide');
+                console.log(imgArray);
+                
+
+                
+
             });
         }
+
+
+
+
+        var r=0;
+        // var imgArray=["food2.jpg","food3.jpg","food4.jpg"];
+        //imgArray=localStorage.getItem('imgArray');
+        // console.log(" hel",imgArray);
+        console.log(imgArray);
+        var fPrevButtonEl=document.querySelector('.fPrevButton');
+        var fNextButtonEl=document.querySelector('.fNextButton');
+        function prev(){
+            imgArray=(localStorage.getItem('imgArray')).split(",");
+            console.log(imgArray);
+            var fImgEl=document.querySelector('#fImg');
+            r--;
+            if(r<0){
+                r=imgArray.length-1;
+            }
+            fImgEl.innerHTML='<img src="assets/img/'+imgArray[r]+'" alt="">';
+        };
+        function next(){
+            imgArray=(localStorage.getItem('imgArray')).split(",");
+            var fImgEl=document.querySelector('#fImg');
+            r++;
+            if(r>=imgArray.length){
+                r=0;
+            }
+            fImgEl.innerHTML='<img src="assets/img/'+imgArray[r]+'" alt="">';
+        };
+
+
+
+
+
+
+
 
        
     // var fModalControlEl=document.querySelector('#closeFModal');
